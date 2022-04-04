@@ -88,4 +88,9 @@ public class UserService {
         user.setUserInfo(userInfo);
         return user;
     }
+
+    public void updateUserInfos(UserInfo userInfo) {
+        userInfo.setUpdateTime(new Date());
+        userDao.updateUserInfos(userInfo);
+    }
 }
