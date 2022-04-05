@@ -14,7 +14,9 @@ import org.springframework.stereotype.Service;
 
 import javax.jws.soap.SOAPBinding;
 import javax.lang.model.element.VariableElement;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -92,5 +94,13 @@ public class UserService {
     public void updateUserInfos(UserInfo userInfo) {
         userInfo.setUpdateTime(new Date());
         userDao.updateUserInfos(userInfo);
+    }
+
+    public User getUserById(Long followingId) {
+        return userDao.getUserById(followingId);
+    }
+
+    public ArrayList<UserInfo> getUserInfoByUserInfo(Set<Long> UserIdList) {
+        return userDao.getUserInfoByUserInfo(UserIdList);
     }
 }
