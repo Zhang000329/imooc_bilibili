@@ -84,4 +84,28 @@ public class UserFollowingService {
         }
         return result;
     }
+
+    public List<UserFollowing> getUserFans(Long userId){
+        List<UserFollowing> fanList = userFollowingDao.getUserFollowingFans(userId);
+        Set<Long> fanIdSet = fanList.stream().map(UserFollowing::getFollowingId).collect(Collectors.toSet());
+        ArrayList<UserInfo> userInfos = new ArrayList<>();
+        if(fanIdSet.size() > 0){
+            userInfos = userService.getUserInfoByUserInfo(fanIdSet);
+        }
+        List<UserFollowing> followingList = userFollowingDao.getUserFollowingFans(userId);
+        for (UserFollowing fan : fanList) {
+            for (UserInfo userInfo : userInfos) {
+                if (fan.getUserId().equals(userInfo.getUserId())) {
+                    userInfo.setFollowed(false);
+                    fan.setUserInfo(userInfo);
+                }
+            }
+            for (UserFollowing following : followingList) {
+                if (following.getFollowingId().equals(fan.getUserId())) {
+                    fan.getUserInfo().setFollowed(true);
+                }
+            }
+        }
+        return fanList;
+    }
 }

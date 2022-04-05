@@ -31,4 +31,10 @@
         from t_user_following
         where userId = #{userId};
     </select>
+
+    <select id="getUserFollowingFans" parameterType="java.lang.Long"  resultType="com.imooc.bilibili.domain.UserFollowing">
+        select *
+        from t_user_following
+        where followingId = #{followingId};
+    </select>
 </mapper>
