@@ -7,6 +7,7 @@ import com.imooc.bilibili.domain.UserFollowing;
 import com.imooc.bilibili.domain.UserInfo;
 import com.imooc.bilibili.domain.constant.UserConstant;
 import com.imooc.bilibili.domain.exception.ConditionException;
+import com.sun.xml.internal.messaging.saaj.soap.ver1_1.Fault1_1Impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -107,5 +108,29 @@ public class UserFollowingService {
             }
         }
         return fanList;
+    }
+
+    public Long addUserFollowingGroups(FollowingGroup followingGroup) {
+        followingGroup.setCreateTime(new Date());
+        followingGroup.setType(UserConstant.USER_FOLLOWING_GROUP_TYPE_USER);
+        followingGroupService.addFollowingGroup(followingGroup);
+        return followingGroup.getId();
+    }
+
+    public List<FollowingGroup> getUserFollowingGroups(Long userId) {
+        return followingGroupService.getUserFollowingGroups(userId);
+    }
+
+    public List<UserInfo> checkFollowingStatus(List<UserInfo> userInfoList, Long userId) {
+        List<UserFollowing> userFollowingList = userFollowingDao.getUserFollowings(userId);
+        for (UserInfo userInfo : userInfoList) {
+            userInfo.setFollowed(false);
+            for (UserFollowing userFollowing : userFollowingList) {
+                if(userFollowing.getFollowingId().equals(userInfo.getUserId())){
+                    userInfo.setFollowed(true);
+                }
+            }
+        }
+        return userInfoList;
     }
 }
