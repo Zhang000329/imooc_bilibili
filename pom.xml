@@ -76,7 +76,14 @@
             <classifier>osx-x86_64</classifier>
             <version>4.1.59.Final</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+            <version>2.5.1</version>
+        </dependency>
     </dependencies>
+
+
     <modules>
         <module>imooc-bilibli-api</module>
         <module>imooc-bilibli-service</module>

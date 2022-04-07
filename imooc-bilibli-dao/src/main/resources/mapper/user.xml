@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.imooc.bilibili.dao.UserDao">
+    <delete id="deleteRefreshToken">
+        delete from
+            t_refresh_token
+        where
+            refreshToken = #{refreshToken}
+          and userId = #{userId}
+    </delete>
     <select id="getUserByPhone" parameterType="java.lang.String" resultType="com.imooc.bilibili.domain.User">
         select *
         from t_user
@@ -111,5 +118,26 @@
         </if>
         order by id desc
         limit #{start}, #{limit}
+    </select>
+    <insert id="addRefreshToken">
+        insert into
+            t_refresh_token(
+            refreshToken,
+            userId,
+            createTime
+        )values(
+                   #{refreshToken},
+                   #{userId},
+                   #{createTime}
+               )
+    </insert>
+
+    <select id="getRefreshTokenDetail" parameterType="java.lang.String" resultType="com.imooc.bilibili.domain.RefreshTokenDetail">
+        select
+            *
+        from
+            t_refresh_token
+        where
+            refreshToken = #{refreshToken}
     </select>
 </mapper>

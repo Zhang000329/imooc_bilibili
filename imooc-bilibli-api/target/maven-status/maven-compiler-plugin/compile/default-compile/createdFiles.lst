@@ -1,0 +1,8 @@
+com/imooc/bilibili/api/UserApi.class
+com/imooc/bilibili/api/aspect/ApiLimitedRoleAspect.class
+com/imooc/bilibili/api/support/UserSupport.class
+com/imooc/bilibili/api/aspect/DataLimitedAspect.class
+com/imooc/bilibili/api/UserFollowingApi.class
+com/imooc/imoocBilibiliApp.class
+com/imooc/bilibili/api/UserAuthApi.class
+com/imooc/bilibili/api/UserMomentApi.class

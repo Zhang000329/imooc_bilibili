@@ -14,8 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.interfaces.RSAPublicKey;
 import java.util.List;
+import java.util.Map;
 import java.util.jar.JarEntry;
 
 @RestController
@@ -50,6 +52,25 @@ public class UserApi {
         return new JsonResponse<>(token);
     }
 
+    @PostMapping("/user-dts")
+    public JsonResponse<Map<String, Object>> loginForDts(@RequestBody User user) throws Exception{
+        Map<String, Object> map = userService.loginForDts(user);
+        return new JsonResponse<>(map);
+    }
+
+    @DeleteMapping("/refresh-tokens")
+    public JsonResponse<String> logout(HttpServletRequest request) throws Exception{
+        String refreshToken = request.getHeader("refreshToken");
+        Long userId = userSupport.getCurrentUserId();
+        userService.logout(refreshToken,userId);
+        return JsonResponse.success();
+    }
+    @PostMapping("/access-tokens")
+    public JsonResponse<String> refreshAccessToken(HttpServletRequest request) throws Exception{
+        String refreshToken = request.getHeader("refreshToken");
+        String accessToken = userService.refreshAccessToken(refreshToken);
+        return new JsonResponse<>(accessToken);
+    }
     @PutMapping("/user-info")
     public JsonResponse<String> updateUserInfos(@RequestBody UserInfo userInfo){
         Long userId = userSupport.getCurrentUserId();

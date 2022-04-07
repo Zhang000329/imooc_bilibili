@@ -10,4 +10,6 @@ public interface UserRoleDao {
 
 
     List<UserRole> getUserRoleByUserId(Long userId);
+
+    Integer addUserRole(UserRole userRole);
 }
