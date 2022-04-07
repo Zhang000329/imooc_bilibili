@@ -1,0 +1,12 @@
+com/imooc/bilibili/service/FollowingGroupService.class
+com/imooc/bilibili/service/config/RocketMQConfig$1.class
+com/imooc/bilibili/service/AuthRoleMenuSerivce.class
+com/imooc/bilibili/service/util/RocketMQUtil$1.class
+com/imooc/bilibili/service/util/RocketMQUtil.class
+com/imooc/bilibili/service/config/RocketMQConfig.class
+com/imooc/bilibili/service/UserRoleService.class
+com/imooc/bilibili/service/UserService.class
+com/imooc/bilibili/service/AuthRoleElementOperationService.class
+com/imooc/bilibili/service/UserFollowingService.class
+com/imooc/bilibili/service/UserMomentService.class
+com/imooc/bilibili/service/AuthRoleService.class

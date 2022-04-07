@@ -4,3 +4,10 @@ spring:
     username: root
     password: zyj000329
     driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    port: 6379
+    host: 127.0.0.1
+rocketmq:
+  name:
+    server:
+      address: 127.0.0.1:15672

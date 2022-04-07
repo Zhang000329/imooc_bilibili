@@ -7,7 +7,7 @@ import com.imooc.bilibili.domain.UserFollowing;
 import com.imooc.bilibili.domain.UserInfo;
 import com.imooc.bilibili.domain.constant.UserConstant;
 import com.imooc.bilibili.domain.exception.ConditionException;
-import com.sun.xml.internal.messaging.saaj.soap.ver1_1.Fault1_1Impl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collector;
+
 import java.util.stream.Collectors;
 
 @Service
